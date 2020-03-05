@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="Dmitry Chernushenko" id="130919144110-01">
+        <createTable tableName="record">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="outerId" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="object_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="object_tz" type="VARCHAR(255)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="integrated" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Dmitry Chernushenko" id="130919144110-02">
+        <addUniqueConstraint columnNames="outerId" constraintName="UN13091914411002" tableName="record"/>
+    </changeSet>
+
+</databaseChangeLog>
